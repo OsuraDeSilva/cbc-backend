@@ -12,7 +12,7 @@ const app  = express();
 const PORT = 5000;
 
 
-const mongoUrl = "mongodb+srv://admin:123@cluster0.jiv8v.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
+const mongoUrl = process.env.MONGO_DB_URI
 
 mongoose.connect(mongoUrl,{})
 
