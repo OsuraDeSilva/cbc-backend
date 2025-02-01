@@ -2,7 +2,6 @@ import express from 'express';
 import bodyParser from 'body-parser';
 import mongoose from 'mongoose';
 import studentRoutes from './routes/studentRoutes.js';
-import productRouter from './routes/productRouter.js';
 import userRouter from './routes/userRouter.js';
 import jwt from "jsonwebtoken";
 import dotenv from "dotenv";
@@ -10,7 +9,6 @@ dotenv.config()
 
 const app  = express();
 const PORT = 5000;
-
 
 const mongoUrl = process.env.MONGO_DB_URI
 
@@ -47,7 +45,6 @@ app.use(
 )
 
 app.use("/api/student",studentRoutes)
-app.use("/api/product",productRouter)
 app.use("/api/user",userRouter)
 
 
