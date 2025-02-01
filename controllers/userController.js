@@ -5,6 +5,24 @@ import jwt from "jsonwebtoken";
 export function createUser(req,res){
 
     const newUserData = req.body
+    
+    if(newUserData.type == "admin"){
+        if(req.user == null){
+            res.json({
+                message: "please login as an administratorto create admin accounts"
+            })
+            return
+        }
+        
+        if(user.User.type != "admin"){  
+            res.json({
+                message : "please login as an administrator to create  admin accounts"
+            })
+            return
+        }
+    }
+
+
 
     newUserData.password = bcript.hashSync(newUserData.password,10)
 
