@@ -7,6 +7,7 @@ export function createUser(req,res){
     const newUserData = req.body
     
     if(newUserData.type == "admin"){
+
         if(req.user == null){
             res.json({
                 message: "please login as an administratorto create admin accounts"
@@ -20,6 +21,7 @@ export function createUser(req,res){
             })
             return
         }
+        
     }
 
 
@@ -77,3 +79,7 @@ export function loginUser(req,res){
         }   
     ) 
 }
+
+
+//osura@example.com - admin
+//osura28@example.com - customer
