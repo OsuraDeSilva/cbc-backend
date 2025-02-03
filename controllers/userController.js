@@ -80,18 +80,29 @@ export function loginUser(req,res){
     ) 
 }
 
-export function isAdmin(res,req){
+export function isAdmin(req,res){
     if(req.user == null){
         return false
     }
 
-    if(req.user.type == "admin"){
+    if(req.user.type != "admin"){
         return false
     }
 
     return true
 }
 
+export function  iscustomer(req){
+    if(req.user == null){
+        return false
+    }
+
+    if(req.user.type != "customer"){
+        return false
+    }
+
+    return true
+}
 
 //osura@example.com - admin
 //osura28@example.com - customer 
