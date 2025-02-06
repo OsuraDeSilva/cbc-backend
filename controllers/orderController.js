@@ -27,6 +27,32 @@ export async function createOrder(req,res){
         }
 
         const newOrderData = req.body
+
+        const newProductArray = []
+        
+        for(let i=0; i < newOrderData.orderedItems.length;i++){
+            const product = await product.findOne({
+                productId : newOrderData.orderedItems[i].productId
+            })
+            
+            if(product == null){
+                res.json({
+                    message : "product with id "+newOrderData.orderedItems[i].productId+" not found"
+                })
+                return
+            }
+
+            newProductArray[i] = {
+                productId : product.productname,
+                price : product.price,
+                quantity : newOrderData.orderedItems[i].quantity,
+                image : product.images[0]
+            }
+        }
+        console.log(newProductArray)
+
+        newOrderData.orderedItems = newProductArray
+
         newOrderData.orderId = orderId
         newOrderData.email = req.user.email
 
